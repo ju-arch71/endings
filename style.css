@@ -1,0 +1,30 @@
+body{
+    font-family:sans-serif;
+    background: black;
+    color: white;
+    text-align: center;
+    
+
+    
+}
+
+.question{
+    width: 600px;
+    margin: 100px auto;
+    color:white;
+    font-size:36px;
+}
+button{
+    width: 600px;
+    padding:15px 100px;
+    background-color:aquamarine;
+    color:black;
+    font-size: 18px;
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+
+}
+h1{
+    font-size:36px;
+}
