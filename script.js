@@ -1,7 +1,23 @@
 let currentQuestion=1;
 
+let plus=0;
+let minus=0;
+let enjoy=0;
+
 function nextQuestion(choice){
     console.log("選んだ選択肢"+ choice);
+    if (choice===1){
+        enjoy++;
+    }
+    else if (choice===2){
+        plus++;
+    }
+    else if (choice===3){
+        minus++;
+    }
+    console.log("plus",plus);
+    console.log("minus",minus);
+
     if (currentQuestion===1){
         document.getElementById("question1").textContent=
         "公園に遊びに来たあなた。何をして遊ぶ？";
@@ -23,6 +39,24 @@ function nextQuestion(choice){
         document.getElementById("choice3").textContent=
         "中学受験する。「ここにいけたらすごい」と思える学校。合格には今まで以上の努力が必要。友人と遊ぶ時間はとても減るだろう。"
         currentQuestion=3;
+    }
+    else if (currentQuestion===3){
+        if (enjoy>plus && enjoy>minus){
+            document.getElementById("question1").textContent=
+            "エンドC:enjoyな人生";
+        }
+        
+        else if(plus>minus){
+            document.getElementById("question1").textContent=
+            "エンドA：プラス＞マイナス";
+        }
+        else if(minus>plus){
+            document.getElementById("question1").textContent=
+            "エンドB:マイナス＞プラス";
+        }
+        document.getElementById("choice1").style.display="none";
+        document.getElementById("choice2").style.display="none";
+        document.getElementById("choice3").style.display="none";
     }
 
 }
