@@ -1,30 +1,308 @@
-body{
-    font-family:sans-serif;
-    background: black;
-    color: white;
-    text-align: center;
-    
 
-    
+/* =========================
+   基本設定
+========================= */
+
+* {
+    box-sizing: border-box;
 }
 
-.question{
-    width: 600px;
-    margin: 100px auto;
-    color:white;
-    font-size:36px;
+:root {
+    --background: #F0EFEA;
+    --paper: #F8F7F2;
+    --sidebar: #E7E6E0;
+    --text: #292B29;
+    --sub-text: #85857E;
+    --border: #D0CFC8;
+    --accent: #777D76;
 }
-button{
-    width: 600px;
-    padding:15px 100px;
-    background-color:aquamarine;
-    color:black;
-    font-size: 18px;
-    border-radius: 10px;
-    margin: 10px;
+
+body {
+    margin: 0;
+    font-family:
+        "Noto Serif JP",
+        "Yu Mincho",
+        "Hiragino Mincho ProN",
+        serif;
+    background: var(--background);
+    color: var(--text);
+}
+
+/* =========================
+   全体レイアウト
+========================= */
+
+.layout {
     display: flex;
-
+    min-height: 100vh;
 }
-h1{
-    font-size:36px;
+
+/* =========================
+   左側の横帯
+========================= */
+
+.sidebar {
+    width: 220px;
+    min-width: 220px;
+    min-height: 100vh;
+    padding: 36px 24px;
+    background: var(--sidebar);
+    border-right: 1px solid var(--border);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.site-title {
+    font-size: 17px;
+    line-height: 1.9;
+    letter-spacing: 0.12em;
+    margin-bottom: 52px;
+}
+
+.progress {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.stage {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--sub-text);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+
+    transition: color 0.25s ease;
+}
+
+.stage-number {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #B7B7B0;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: sans-serif;
+    font-size: 10px;
+}
+
+.stage.active {
+    color: var(--text);
+}
+
+.stage.active .stage-number {
+    background: var(--text);
+    color: var(--paper);
+    border-color: var(--text);
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 40px;
+    color: #999991;
+    font-family: sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+}
+
+/* =========================
+   質問エリア
+========================= */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 72px 48px;
+    background: var(--paper);
+}
+
+.question {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    font-size: 16px;
+    text-align: left;
+}
+
+.eyebrow {
+    margin: 0 0 48px;
+    color: var(--sub-text);
+    font-family: sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+}
+
+h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-align: center;
+}
+
+.title-line {
+    width: 36px;
+    height: 1px;
+    background: #A5A49D;
+    margin: 24px auto 36px;
+}
+
+#question1 {
+    margin: 0 0 36px;
+    font-size: 16px;
+    line-height: 2.2;
+    letter-spacing: 0.04em;
+}
+
+/* =========================
+   選択肢
+========================= */
+
+.choices {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+button {
+    width: 100%;
+    min-height: 58px;
+    margin: 0;
+    padding: 16px 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+    line-height: 1.8;
+
+    cursor: pointer;
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        padding 0.25s ease;
+}
+
+.choice-number {
+    flex-shrink: 0;
+    color: var(--sub-text);
+    font-family: sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+}
+
+.choice-text {
+    flex: 1;
+}
+
+.choice-arrow {
+    flex-shrink: 0;
+    color: var(--sub-text);
+    transition: transform 0.25s ease;
+}
+
+button:hover {
+    background: #EFEEE8;
+    border-color: #96968E;
+}
+
+button:hover .choice-arrow {
+    transform: translateX(4px);
+}
+
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* =========================
+   診断結果
+========================= */
+
+#result {
+    margin-top: 32px;
+    padding: 24px;
+    border-top: 1px solid var(--border);
+}
+
+#result p {
+    font-size: 14px;
+    line-height: 2;
+}
+
+/* =========================
+   スマートフォン対応
+========================= */
+
+@media (max-width: 700px) {
+    .layout {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-width: 0;
+        min-height: 0;
+        padding: 16px 20px;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .site-title {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .progress,
+    .sidebar-footer {
+        display: none;
+    }
+
+    .main-content {
+        min-height: calc(100vh - 65px);
+        padding: 48px 22px;
+        align-items: flex-start;
+    }
+
+    .question {
+        max-width: 560px;
+    }
+
+    .eyebrow {
+        margin-bottom: 40px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    #question1 {
+        font-size: 15px;
+        line-height: 2;
+    }
+
+    button {
+        padding: 14px 12px;
+        gap: 12px;
+        font-size: 13px;
+    }
 }
