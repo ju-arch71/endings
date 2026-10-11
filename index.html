@@ -1,24 +1,123 @@
 <!DOCTYPE html>
 <html lang="ja">
-
-
 <head>
     <meta charset="UTF-8">
-    <title>診断</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>『あなた』をもう一度</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <div class="question">
-        <h1>質問</h1>
 
-        <p id="question1">目の前に幾つかのおもちゃがある。あなたが最初に手を伸ばしたのは？</p>
+    <div class="layout">
 
-        <button id="choice1" onclick="nextQuestion(1)">音のなるガラガラ</button>
-        <button id="choice2" onclick="nextQuestion(2)">柔らかいクマのぬいぐるみ</button>
-        <button id="choice3" onclick="nextQuestion(3)">歯車仕掛けの動くおもちゃ</button>
+        <!-- 左側の横帯 -->
+        <aside class="sidebar">
+            <div class="site-title">
+                『あなた』を<br>もう一度
+            </div>
 
-        <script src="script.js"></script>
+            <div class="progress">
+                <div class="stage active">
+                    <span class="stage-number">1</span>
+                    <span>乳児期</span>
+                </div>
+                <div class="stage">
+                    <span class="stage-number">2</span>
+                    <span>幼児期</span>
+                </div>
+                <div class="stage">
+                    <span class="stage-number">3</span>
+                    <span>学童期</span>
+                </div>
+                <div class="stage">
+                    <span class="stage-number">4</span>
+                    <span>青年期①</span>
+                </div>
+                <div class="stage">
+                    <span class="stage-number">5</span>
+                    <span>青年期②</span>
+                </div>
+                <div class="stage">
+                    <span class="stage-number">6</span>
+                    <span>青年期③</span>
+                </div>
+                <div class="stage">
+                    <span class="stage-number">7</span>
+                    <span>成人初期</span>
+                </div>
+                <div class="stage">
+                    <span class="stage-number">8</span>
+                    <span>壮年期</span>
+                </div>
+                <div class="stage">
+                    <span class="stage-number">9</span>
+                    <span>老年期</span>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">YOUR LIFE, YOUR CHOICES</div>
+        </aside>
+
+        <!-- 質問エリア -->
+        <main class="main-content">
+            <div class="question">
+
+                <p class="eyebrow">01 / 09　乳児期（0〜3歳）</p>
+
+                <h1>質問</h1>
+
+                <div class="title-line"></div>
+
+                <p id="question1">
+                    目の前に幾つかのおもちゃがある。
+                    あなたが最初に手を伸ばしたのは？
+                </p>
+
+                <div id="result" style="display:none;">
+                    <p>開放性：<span id="O"></span></p>
+                    <p>誠実性：<span id="C"></span></p>
+                    <p>外向性：<span id="E"></span></p>
+                    <p>協調性：<span id="A"></span></p>
+                    <p>神経症傾向：<span id="N"></span></p>
+                </div>
+
+                <div class="choices">
+                    <button
+                        id="choice1"
+                        onclick="nextQuestion(this)"
+                        data-O="0" data-C="0" data-E="2"
+                        data-A="1" data-N="-1">
+                        <span class="choice-number">01</span>
+                        <span class="choice-text">音のなるガラガラ</span>
+                        <span class="choice-arrow">→</span>
+                    </button>
+
+                    <button
+                        id="choice2"
+                        onclick="nextQuestion(this)"
+                        data-O="2" data-C="1" data-E="-1"
+                        data-A="0" data-N="0">
+                        <span class="choice-number">02</span>
+                        <span class="choice-text">柔らかいクマのぬいぐるみ</span>
+                        <span class="choice-arrow">→</span>
+                    </button>
+
+                    <button
+                        id="choice3"
+                        onclick="nextQuestion(this)"
+                        data-O="1" data-C="2" data-E="0"
+                        data-A="-1" data-N="1">
+                        <span class="choice-number">03</span>
+                        <span class="choice-text">歯車仕掛けの動くおもちゃ</span>
+                        <span class="choice-arrow">→</span>
+                    </button>
+                </div>
+
+            </div>
+        </main>
+
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
